@@ -9,5 +9,6 @@ let end=document.querySelector('#end');
 end.addEventListener('click',(event)=>{
 console.log('end');
 });
-
+// start a game
+var score=0;
 
