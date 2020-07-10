@@ -1,3 +1,4 @@
+/* headings and text alignnent */
 body {
     font-family: 'Times New Roman', 'Times New Roman', Times, serif;
     background: cornsilk;
@@ -5,6 +6,7 @@ body {
 section {
     text-align: center;
 }
+/* adding the cells with the colors */
 .squares{
     display: grid;
     grid-template-columns: repeat(2,auto);
@@ -39,3 +41,9 @@ section {
     background: red;
     border: 5px solid black; 
 }
+
+
+
+
+
+

@@ -16,9 +16,16 @@
             <div id='cell3' class='cell'></div>
         </div>
         
-   <button class='instruction' onClick=>How To Play</button>
-   <button class='start' onClick=>Start</button>
-   <button class='end' onClick=>End</button>
+   <button class='instruction' onclick='myFunction()'>How To Play</button>
+   <script>
+       function myFunction(){
+           alert('Click the light pattern for as long as possible. See how many correct choices you can achieve.');
+       }
+   </script>
+   <div class='buttons'>
+       <button id='start' class='start'>Start</button>
+       <button id='end' class='End'>End</button>
+    </div>
    <button class='choices' onClick=>Correct Choices</button>
     <script src='script.js'></script>
     <footer>
