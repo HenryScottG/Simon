@@ -1,0 +1,41 @@
+body {
+    font-family: 'Times New Roman', 'Times New Roman', Times, serif;
+    background: cornsilk;
+}
+section {
+    text-align: center;
+}
+.squares{
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap: 30px 30px;
+    height: 300px;
+    width: 400px;
+    margin: auto;
+    padding: 15px 15px;
+}
+.cell {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 50px;
+    border: 1px solid black;
+    box-shadow: 0 0 0 1px gray;
+    padding: 15px 32px;
+}
+#cell0{
+    background: blue;
+    border: 5px solid black;    
+}
+#cell1{
+    background: green;
+    border: 5px solid black; 
+}
+#cell2{
+    background: yellow;
+    border: 5px solid black; 
+}
+#cell3{
+    background: red;
+    border: 5px solid black; 
+}
