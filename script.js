@@ -1,20 +1,68 @@
-console.log('ok');
+// console.log('ok');
 // listener for Start button
 let start=document.querySelector('#start');
+let cells = document.getElementsByClassName('cell');
+let count=0;
+let compSeq=[];
+let interval=function() {
+    console.log(compSeq[count]);
+    
+    let blinkingCell=document.getElementById(`cell${compSeq[count]}`);
+    // const cell=document.querySelector('#cell'+count);
+    console.log(blinkingCell);
+    console.log(compSeq);
+    // console.log(cell);      
+    // count++;
+    // if (count>=4 ){
+    //     clearInterval(interval);
+    //  }
+    blinkingCell.style.backgroundColor='black';
+    count++;
+ }
 start.addEventListener('click',(event)=>{
 console.log('start');
-let cells = document.getElementsByClassName('cell');
-let compSeq=[];
+
 // computer picks the sequence of colors
+
 for (let i = 0; i < 4; i++){
-    compSeq.push(Math.floor(Math.random()*4 +1));
+   
+    compSeq.push(Math.floor(Math.random()*4));
+    
+    
+   setTimeout(interval,`${(i+1)*1000}`);
+   
+//    clearInterval(interval);
+//     // https://codereview.stackexchange.com/questions/162096/simon-game-in-javascript
+//     let flashLights=function(compSeq) {
+//         let i=0;
+//         let interval=setInterval(function() {
+//           $('cell' + compSeq[i]).fadeTo('slow', 1).fadeTo('slow', 2);
+//           i++;
+//           if (i>=compSeq.length) {
+//             clearInterval(interval);
+//           }
+//         }, 1500);
+//       };
     console.log(compSeq[i]);
 }
+// }
+// let count=0
+// let interval=setInterval(function() {
+//     const cell=document.querySelector('#cell'+count);
+//     console.log(compSeq);
+//     console.log(cell);      
+//     count++;
+//     if (count>=4 ){
+//         clearInterval(interval);
+//      }
+//  }, 1000);
+
+
+
+  //user starts
 let userTurn=0;
 function input(turn,color){
 let playerSeq=-1;
-    // for (let i = 0; i < 4; i++){
-        // compSeq.push(Math.floor(Math.random()*4 +1));
         if (color==='cell0'){
             playerSeq=1;
         } else if (color==='cell1'){
@@ -24,12 +72,11 @@ let playerSeq=-1;
         } else if (color==='cell3'){
             playerSeq=4;
         } 
-        if (compSeq[turn]===playerSeq){ //matching
+        if (compSeq[turn]===playerSeq){ //matching check between the two clicks
             console.log('winner');
         }  else{
             console.log('loser');
         }
-
         console.log(compSeq[turn]);
         console.log(color);
 }
@@ -37,9 +84,7 @@ let playerSeq=-1;
 for(let i = 0; i < cells.length; i++){
     cells[i].addEventListener('click', function(){
         let cellId = this.getAttribute('id'); // this circle
-        cells[i].fadeTo('fast', 0.5).fadeTo('fast', 1);
-        // userInput.push(parseInt(circleId.charAt(circleId.length - 1))); // grabbing last user input's circle array
-        // roundStart(); // running program again
+ 
         input(userTurn,cellId);
         userTurn++; // increment user turn by 1
         });
@@ -47,19 +92,13 @@ for(let i = 0; i < cells.length; i++){
 });
 
 
-
-
-
 // add listener for End button
 let end=document.querySelector('#end');
 end.addEventListener('click',(event)=>{
-console.log('end');
+    location.reload(); // refresh the browser to start over
+    return false;
+    console.log('end');
 });
 
 
 
-
-// let myCells=document.querySelectorAll('.cell');
-// myCells.forEach(cell=>{
-//     document.addEventListener('click', getCell);  
-// })

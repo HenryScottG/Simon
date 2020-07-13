@@ -25,22 +25,27 @@ section {
     box-shadow: 0 0 0 1px gray;
     padding: 15px 32px;
     border-radius: 40px;
+    
 }
 #cell0{
     background: blue;
-    border: 5px solid black;    
+    border: 5px solid black;
+    /* transition: background-color 0.5s ease;     */
 }
 #cell1{
     background: green;
     border: 5px solid black; 
+    /* transition: background-color 0.5s ease; */
 }
 #cell2{
     background: yellow;
     border: 5px solid black; 
+    /* transition: background-color 0.5s ease; */
 }
 #cell3{
     background: red;
     border: 5px solid black; 
+    /* transition: background-color 0.5s ease; */
 }
 
 
