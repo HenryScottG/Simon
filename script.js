@@ -3,48 +3,90 @@
 // let cells=document.getElementsByClassName('cell');
 let cells=document.querySelectorAll(".cell");
 let startButton=document.getElementById("start");
-let moves=[1, 2, 1, 3];
-let count=0;
+let title=document.querySelector(".game-title");
+// let counter=1;
+let playerMoves=[];
 let compSeq=[];
-let interval=function() {
-    console.log(compSeq[count]);
- 
-console.log(compSeq);
-    // console.log(cell);      
-    // count++;
-    // if (count>=4 ){
-    //     clearInterval(interval);
-    //  }
+let counter=1;
+let clicked=0;
+// GENERATE RANDOM NUMBERS FOR THE MOVES ARRAY
+function generateRandomSimonMoves() {
+    for (let i = 0; i < 4; i++) {
+    let randomNumber = Math.floor(Math.random() * 4);
+      compSeq.push(randomNumber);
+    //   console.log(compSeq);
+    }
+    // addCellEvents();
+    console.log(compSeq, playerMoves, counter);
+}
 
- }
-startButton.addEventListener('click', function(){
+function cellEventListener() {
+let lastChar = this.id.substr(this.id.length - 1);
+    playerMoves.push(lastChar);
+  
+    console.log(lastChar, compSeq, playerMoves, counter);
+    
+if (lastChar == compSeq[playerMoves.length - 1]) {
+      console.log("good so far");
+      counter++;
+      blink();
+    } else {
+      console.log("loser");
+      // removeCellEvents();
+    }
+} 
+
+function addCellEvents() {
+    cells.forEach(function (cell) {
+      cell.addEventListener("click", cellEventListener);
+    });
+}
+function removeCellEvents() {
+    cells.forEach(function (cell) {
+      cell.removeEventListener("click", cellEventListener);
+    });
+}
+
+// Add listener for the start button.
+startButton.addEventListener('click', startGame);
 // console.log('start');
 // computer picks the sequence of colors
+function startGame() {
+    compSeq = [];
+    counter = 1;
+    removeCellEvents();
+    addCellEvents();
+    generateRandomSimonMoves();
+    blink();
+}
 
-for (let i = 0; i < 4; i++){
-    compSeq.push(Math.floor(Math.random()*4));
-    // setTimeout(interval,`${(i+1)*2000}`);
-        console.log(compSeq[i]);
-    }
-
-compSeq.forEach((move, index) => {
+function blink() {
+    // LOOP OVER THE MOVES ARRAY. FOR EACH MOVE MAKE THE COORESPONDING CELL BLINK.
+for (let index = 0; index <= counter - 1; index++) {
+      // EVERY TIME THIS TIMEOUT FUNCTION IS CALLED LOOP OVER THE 4 CELLS AND BLINK
+      // THE CELL WITH THE ID THAT MATCHES THE MOVE
     let timeout = function () {
-      cells.forEach((cell) => {
-        cell.style.opacity = "1";
-        if (`cell${move}` === cell.id) {
-          cell.style.opacity = "0.5";
+    cells.forEach((cell) => {
+          // TO RESET EACH CELL TO 0.5 OPACITY, THE INITIAL STATE
+    cell.style.opacity = "0.5";
+  
+    setTimeout(function () {
+            // IF WE'VE REACHED THE LAST MOVE IN THE ARRAY, WE NEED TO RESET THAT CELL
+    if (index == compSeq.length) {
+    document.getElementById(`cell${compSeq[compSeq.length - 1]}`).style.opacity = "0.5";
+  
+              // IF THE MOVE MATCHES THE CELL ID THEN BLINK IT
+        } else if (`cell${compSeq[index]}` === cell.id) {
+              cell.style.opacity = "1";
+        } else {
+              return;
         }
-      });
+     }, 400);
+    });
     };
-    setTimeout(timeout, `${(index + 1) * 400}`);
-  });
-
-
-
-// let score=0   // updating the score
-// let scoretext=document.getElementById('scorecounter');
-// scoretext.innerText=''+ score;
-
+      setTimeout(timeout, `${(index + 1) * 800}`);
+    }
+}
 
   //user starts
 let userTurn=0;
@@ -61,8 +103,28 @@ console.log(color)
         } else if (color==='cell3'){
             playerSeq=3;
         } 
-        if (compSeq[userTurn]===playerSeq){ //matching check between the two clicks
+    //    create an empty array. 
+    // click start, grab the 1st index of compSeq to the new array.
+    // once player click grabs checks to see if it equals the new array input.
+    // if correct, grab the next number from compSeq and adds it to the new array.
+    // blinks again for the new sequence. repeat until the length match for the new array
+    // and the compSeq. if they match we have a winner. 
+
+        // while (clicked<compSeq.length){
+        //     console.log('clicked ',clicked);
+        //     console.log('userTurn ',userTurn);
+        // if (compSeq[userTurn]===playerSeq){
+        //     console.log('correct');
+        // }
+        // }
+        
+    if (compSeq[userTurn]===playerSeq){ //matching check between the two clicks
             
+            //function name for the winner
+    if (counter===compSeq.length){
+        title.innerText='Winner';    
+        console.log('Winner');
+        }
             console.log('correct');
         }  else{
             alert('You Lost The Game! Click Start again to play.');
@@ -80,7 +142,7 @@ for(let i = 0; i < cells.length; i++){
     userTurn++; // increment user turn by 1
     });
 }
-});
+// });
 
 // add listener for End button
 let end=document.querySelector('#end');
