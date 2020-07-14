@@ -15,7 +15,7 @@ function generateRandomSimonMoves() {
     let randomNumber = Math.floor(Math.random() * 4);
       compSeq.push(randomNumber);
     //   console.log(compSeq);
-    }
+    } 
     // addCellEvents();
     console.log(compSeq, playerMoves, counter);
 }
@@ -23,15 +23,18 @@ function generateRandomSimonMoves() {
 function cellEventListener() {
 let lastChar = this.id.substr(this.id.length - 1);
     playerMoves.push(lastChar);
-  
+//   insert code.
     console.log(lastChar, compSeq, playerMoves, counter);
     
-if (lastChar == compSeq[playerMoves.length - 1]) {
-      console.log("good so far");
-      counter++;
-      blink();
+if (lastChar == compSeq[playerMoves.length - 1]&& counter==4) {
+    title.innerText='Winner';    
+    console.log('Winner');
+    } else if (lastChar == compSeq[playerMoves.length - 1]) {
+        console.log("good so far");
+        counter++;
+        blink();
     } else {
-      console.log("loser");
+        console.log("loser");
       // removeCellEvents();
     }
 } 
@@ -123,6 +126,7 @@ console.log(color)
             //function name for the winner
     if (counter===compSeq.length){
         title.innerText='Winner';    
+        return false;
         console.log('Winner');
         }
             console.log('correct');
@@ -133,14 +137,23 @@ console.log(color)
         }
         console.log(compSeq[userTurn]);
         console.log(color);
+        return true;
 }
 // creating the event listeners for the cells
+
 for(let i = 0; i < cells.length; i++){
+    let keepPlaying
     cells[i].addEventListener('click', function(){
     let cellId = this.getAttribute('id'); // this circle
-    input(cellId);
-    userTurn++; // increment user turn by 1
+    keepPlaying = input(cellId);
+    
+    // userTurn++; // increment user turn by 1
     });
+    if (keepPlaying){
+        userTurn++;
+    }else{
+        break;
+    }
 }
 // });
 
