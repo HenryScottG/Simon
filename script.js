@@ -1,60 +1,54 @@
 // listener for Start button
-let start=document.querySelector('#start');
-let cells = document.getElementsByClassName('cell');
+// let start=document.querySelector('#start');
+// let cells=document.getElementsByClassName('cell');
+let cells=document.querySelectorAll(".cell");
+let startButton=document.getElementById("start");
+let moves=[1, 2, 1, 3];
 let count=0;
 let compSeq=[];
 let interval=function() {
     console.log(compSeq[count]);
-let blinkingCell=document.getElementById(`cell${compSeq[count]}`);
-blinkingCell.classList.remove('blinkcell');
-    // const cell=document.querySelector('#cell'+count);
-    console.log(blinkingCell);
-    console.log(compSeq);
+ 
+console.log(compSeq);
     // console.log(cell);      
     // count++;
     // if (count>=4 ){
     //     clearInterval(interval);
     //  }
-    blinkingCell.classList.add('blinkcell');
-    count++;
-    clearTimeout(interval);
+
  }
-start.addEventListener('click',(event)=>{
+startButton.addEventListener('click', function(){
 // console.log('start');
 // computer picks the sequence of colors
 
 for (let i = 0; i < 4; i++){
-compSeq.push(Math.floor(Math.random()*4));
-setTimeout(interval,`${(i+1)*2000}`);
-   
-//    clearInterval(interval);
-//     // https://codereview.stackexchange.com/questions/162096/simon-game-in-javascript
-//     let flashLights=function(compSeq) {
-//         let i=0;
-//         let interval=setInterval(function() {
-//           $('cell' + compSeq[i]).fadeTo('slow', 1).fadeTo('slow', 2);
-//           i++;
-//           if (i>=compSeq.length) {
-//             clearInterval(interval);
-//           }
-//         }, 1500);
-//       };
-    console.log(compSeq[i]);
-}
-// }
-// let count=0
-// let interval=setInterval(function() {
-//     const cell=document.querySelector('#cell'+count);
-//     console.log(compSeq);
-//     console.log(cell);      
-//     count++;
-//     if (count>=4 ){
-//         clearInterval(interval);
-//      }
-//  }, 1000);
+    compSeq.push(Math.floor(Math.random()*4));
+    // setTimeout(interval,`${(i+1)*2000}`);
+        console.log(compSeq[i]);
+    }
+
+compSeq.forEach((move, index) => {
+    let timeout = function () {
+      cells.forEach((cell) => {
+        cell.style.opacity = "1";
+        if (`cell${move}` === cell.id) {
+          cell.style.opacity = "0.5";
+        }
+      });
+    };
+    setTimeout(timeout, `${(index + 1) * 400}`);
+  });
+
+
+
+// let score=0   // updating the score
+// let scoretext=document.getElementById('scorecounter');
+// scoretext.innerText=''+ score;
+
 
   //user starts
 let userTurn=0;
+
 function input(color){
 console.log(color)
     let playerSeq=null;
@@ -69,12 +63,11 @@ console.log(color)
         } 
         if (compSeq[userTurn]===playerSeq){ //matching check between the two clicks
             
-            console.log('winner');
+            console.log('correct');
         }  else{
-            alert('You Lost The Game!');
+            alert('You Lost The Game! Click Start again to play.');
             location.reload(); // refresh the browser to start over
             return false;
-            console.log('loser');
         }
         console.log(compSeq[userTurn]);
         console.log(color);

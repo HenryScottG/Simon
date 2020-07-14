@@ -30,34 +30,29 @@ section {
 #cell0{
     background: blue;
     border: 5px solid black;
-    /* transition: background-color 0.5s ease;     */
+   
 }
 #cell1{
     background: green;
     border: 5px solid black; 
-    /* transition: background-color 0.5s ease; */
+    
 }
 #cell2{
     background: yellow;
     border: 5px solid black; 
-    /* transition: background-color 0.5s ease; */
+   
 }
 #cell3{
     background: red;
     border: 5px solid black; 
-    /* transition: background-color 0.5s ease; */
+    
 }
-.blinkcell{
-    animation:blink 0.5s ease-in-out alternate;
-}
-@keyframes blink {
-    0%{
-      opacity: 1;
-    }
-    100%{
-      opacity: 0;
-    }
-  }
+/* .blinkcell{
+    /* animation:blink 0.5s ease-in-out alternate; */
+    /* transition: opacity 0.5s ease; 
+    opacity: 0.5;
+} */ */
+
 
 
 
