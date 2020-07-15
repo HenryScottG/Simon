@@ -23,16 +23,18 @@ function generateRandomSimonMoves() {
 function cellEventListener() {
 let lastChar = this.id.substr(this.id.length - 1);
     playerMoves.push(lastChar);
-//   insert code.
+
     console.log(lastChar, compSeq, playerMoves, counter);
     
-if (lastChar == compSeq[playerMoves.length - 1]&& counter==4) {
-    title.innerText='Winner';    
+if (lastChar == compSeq[playerMoves.length - 1]&& counter==4) { //checking the count complete
+    title.innerText='Winner';    // through array correctly, display winner
+    setTimeout(alert("Winner"),2000); // alert for winner and refresh the page
+    location.reload();
     console.log('Winner');
-    } else if (lastChar == compSeq[playerMoves.length - 1]) {
+    } else if (lastChar == compSeq[playerMoves.length - 1]) { // goes through the comp sequence
         console.log("good so far");
-        counter++;
-        blink();
+        counter++; //counting through the array
+        blink(); // calling blink function
     } else {
         console.log("loser");
       // removeCellEvents();
@@ -53,14 +55,14 @@ function removeCellEvents() {
 // Add listener for the start button.
 startButton.addEventListener('click', startGame);
 // console.log('start');
-// computer picks the sequence of colors
+// start the game
 function startGame() {
     compSeq = [];
     counter = 1;
     removeCellEvents();
     addCellEvents();
     generateRandomSimonMoves();
-    blink();
+    blink(); // calling blink function
 }
 
 function blink() {
@@ -87,7 +89,7 @@ for (let index = 0; index <= counter - 1; index++) {
      }, 400);
     });
     };
-      setTimeout(timeout, `${(index + 1) * 800}`);
+      setTimeout(timeout, `${(index + 1) * 800}`); 
     }
 }
 
@@ -106,7 +108,9 @@ console.log(color)
         } else if (color==='cell3'){
             playerSeq=3;
         } 
-    //    create an empty array. 
+    countBlink=[];
+    // if ()   
+    // create an empty array. 
     // click start, grab the 1st index of compSeq to the new array.
     // once player click grabs checks to see if it equals the new array input.
     // if correct, grab the next number from compSeq and adds it to the new array.
@@ -129,11 +133,11 @@ console.log(color)
         return false;
         console.log('Winner');
         }
-            console.log('correct');
+        console.log('correct');
         }  else{
-            alert('You Lost The Game! Click Start again to play.');
-            location.reload(); // refresh the browser to start over
-            return false;
+        alert('You Lost The Game! Click Start again to play.');
+        location.reload(); // refresh the browser to start over
+        return false;
         }
         console.log(compSeq[userTurn]);
         console.log(color);

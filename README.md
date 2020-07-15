@@ -15,6 +15,8 @@ The functionality includes:
   
 Approach Used
 Used Wireframing to visualize the page layout. 
+![](./Simon.png)
+[Scott's Project](https://henryscottg.github.io/Simon/)
  * Putting the Score at the top of the screen helps the end user quickly see how they are doing. 
  * The layout was all centralized on the screen to help keep the focus in one area. 
  
