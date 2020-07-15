@@ -23,9 +23,12 @@ Used Wireframing to visualize the page layout.
  
  User Stories
  * As a user, I should be able to understand how to play the game.
- * As a user, I should be able to see my score easily. 
+ * As a user, I should be able to if I've won or lost. 
  * As a user, I should be able to click a button to start the game.
  * As a user, I should be able to click a button to stop the game.
  * As a user, I should be able see which cell needs to be clicked.
  
+ Future items
+ * Display the score for the clicks. 
+ * Create a more improved look/feel.
  
