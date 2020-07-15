@@ -16,7 +16,9 @@ The functionality includes:
 Approach Used
 Used Wireframing to visualize the page layout. 
 ![](./Simon.png)
-[Scott's Project](https://henryscottg.github.io/Simon/)
+
+[Scott's Project]
+(https://henryscottg.github.io/Simon/)
  * Putting the Score at the top of the screen helps the end user quickly see how they are doing. 
  * The layout was all centralized on the screen to help keep the focus in one area. 
  
@@ -31,4 +33,12 @@ Used Wireframing to visualize the page layout.
  Future items
  * Display the score for the clicks. 
  * Create a more improved look/feel.
+ * Correct the bugs for the blinks. 
+ * Avoid alerts, these are extra clicks.
+
+ Lessons Learned
+ * Setup for how the code will flow.
+ * Understand how the game moves through the code. 
+ * Don't under estimate the complexity.
+ 
  

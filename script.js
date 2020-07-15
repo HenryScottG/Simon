@@ -1,6 +1,3 @@
-// listener for Start button
-// let start=document.querySelector('#start');
-// let cells=document.getElementsByClassName('cell');
 let cells=document.querySelectorAll(".cell");
 let startButton=document.getElementById("start");
 let title=document.querySelector(".game-title");
@@ -54,8 +51,7 @@ function removeCellEvents() {
 
 // Add listener for the start button.
 startButton.addEventListener('click', startGame);
-// console.log('start');
-// start the game
+
 function startGame() {
     compSeq = [];
     counter = 1;
@@ -108,39 +104,23 @@ console.log(color)
         } else if (color==='cell3'){
             playerSeq=3;
         } 
-    countBlink=[];
-    // if ()   
-    // create an empty array. 
-    // click start, grab the 1st index of compSeq to the new array.
-    // once player click grabs checks to see if it equals the new array input.
-    // if correct, grab the next number from compSeq and adds it to the new array.
-    // blinks again for the new sequence. repeat until the length match for the new array
-    // and the compSeq. if they match we have a winner. 
-
-        // while (clicked<compSeq.length){
-        //     console.log('clicked ',clicked);
-        //     console.log('userTurn ',userTurn);
-        // if (compSeq[userTurn]===playerSeq){
-        //     console.log('correct');
-        // }
-        // }
-        
+    
     if (compSeq[userTurn]===playerSeq){ //matching check between the two clicks
             
             //function name for the winner
     if (counter===compSeq.length){
         title.innerText='Winner';    
         return false;
-        console.log('Winner');
+
         }
-        console.log('correct');
+        // console.log('correct');
         }  else{
         alert('You Lost The Game! Click Start again to play.');
         location.reload(); // refresh the browser to start over
         return false;
         }
-        console.log(compSeq[userTurn]);
-        console.log(color);
+        // console.log(compSeq[userTurn]);
+        // console.log(color);
         return true;
 }
 // creating the event listeners for the cells
@@ -159,7 +139,7 @@ for(let i = 0; i < cells.length; i++){
         break;
     }
 }
-// });
+
 
 // add listener for End button
 let end=document.querySelector('#end');
