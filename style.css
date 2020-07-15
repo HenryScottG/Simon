@@ -1,4 +1,4 @@
-/* headings and text alignnent */
+/* HEADING AND TEXT ALIGNMENT */
 body {
     font-family: 'Times New Roman', 'Times New Roman', Times, serif;
     background: cornsilk;
@@ -6,7 +6,7 @@ body {
 section {
     text-align: center;
 }
-/* adding the cells with the colors */
+/* ADD THE CELLS FOR LAYOUT AND COLOR */
 .squares{
     display: grid;
     grid-template-columns: repeat(2,auto);
@@ -47,11 +47,7 @@ section {
     border: 5px solid black; 
     
 }
-/* .blinkcell{
-    /* animation:blink 0.5s ease-in-out alternate; */
-    /* transition: opacity 0.5s ease; 
-    opacity: 0.5;
-} */ */
+
 
 
 

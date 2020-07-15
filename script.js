@@ -1,55 +1,53 @@
 let cells=document.querySelectorAll(".cell");
 let startButton=document.getElementById("start");
 let title=document.querySelector(".game-title");
-// let counter=1;
 let playerMoves=[];
 let compSeq=[];
 let counter=1;
 let clicked=0;
-// GENERATE RANDOM NUMBERS FOR THE MOVES ARRAY
+// GENERATE RANDOM COMPUTER NUMBERS FOR THE MOVES ARRAY
 function generateRandomSimonMoves() {
     for (let i = 0; i < 4; i++) {
     let randomNumber = Math.floor(Math.random() * 4);
       compSeq.push(randomNumber);
     //   console.log(compSeq);
     } 
-    // addCellEvents();
     console.log(compSeq, playerMoves, counter);
 }
 
 function cellEventListener() {
 let lastChar = this.id.substr(this.id.length - 1);
     playerMoves.push(lastChar);
-
     console.log(lastChar, compSeq, playerMoves, counter);
     
-if (lastChar == compSeq[playerMoves.length - 1]&& counter==4) { //checking the count complete
-    title.innerText='Winner';    // through array correctly, display winner
-    setTimeout(alert("Winner"),2000); // alert for winner and refresh the page
+if (lastChar == compSeq[playerMoves.length - 1]&& counter==4) { //CHECKING THE COUNTER IF COMPLETED
+    title.innerText='Winner';    // THROUGH THE ARRAY AND DISPLAY WINNER IF CORRECT
+    setTimeout(alert("Winner"),2000); // POP UP ALERT FOR THE WINNER MESSAGE
     location.reload();
-    console.log('Winner');
-    } else if (lastChar == compSeq[playerMoves.length - 1]) { // goes through the comp sequence
-        console.log("good so far");
-        counter++; //counting through the array
-        blink(); // calling blink function
+    // console.log('Winner');
+    } else if (lastChar == compSeq[playerMoves.length - 1]) { // THIS GOES THROUGH THE COMUTER SEQUENCE
+        // console.log("good so far");
+        counter++; //COUNTING THROUGH THE ARRAY
+        blink(); // CALLING THE BLINK FUNCTION
     } else {
-        console.log("loser");
+        // console.log("loser");
       // removeCellEvents();
     }
 } 
-
+// CALL FOR THE LISTENER FOR THE CELLS BEING CLICKED
 function addCellEvents() {
     cells.forEach(function (cell) {
       cell.addEventListener("click", cellEventListener);
     });
 }
+// REMOVE THE LISTENER
 function removeCellEvents() {
     cells.forEach(function (cell) {
       cell.removeEventListener("click", cellEventListener);
     });
 }
 
-// Add listener for the start button.
+// LISTENER FOR THE START BUTTON
 startButton.addEventListener('click', startGame);
 
 function startGame() {
@@ -58,7 +56,7 @@ function startGame() {
     removeCellEvents();
     addCellEvents();
     generateRandomSimonMoves();
-    blink(); // calling blink function
+    blink(); // CALL THE BLINK FUNCTION
 }
 
 function blink() {
@@ -89,9 +87,9 @@ for (let index = 0; index <= counter - 1; index++) {
     }
 }
 
-  //user starts
+  //PLAYERS TURN
 let userTurn=0;
-
+// ASSIGNING THE CELLS 
 function input(color){
 console.log(color)
     let playerSeq=null;
@@ -105,9 +103,8 @@ console.log(color)
             playerSeq=3;
         } 
     
-    if (compSeq[userTurn]===playerSeq){ //matching check between the two clicks
+    if (compSeq[userTurn]===playerSeq){ //DOES IT MATCH THE COMPSEQ AND PLAYERS CLICK
             
-            //function name for the winner
     if (counter===compSeq.length){
         title.innerText='Winner';    
         return false;
@@ -116,24 +113,23 @@ console.log(color)
         // console.log('correct');
         }  else{
         alert('You Lost The Game! Click Start again to play.');
-        location.reload(); // refresh the browser to start over
+        location.reload(); // REFRESH THE BROWSER TO START OVER
         return false;
         }
         // console.log(compSeq[userTurn]);
         // console.log(color);
         return true;
 }
-// creating the event listeners for the cells
+// EVENT LISTENER FOR THE CELL
 
 for(let i = 0; i < cells.length; i++){
     let keepPlaying
     cells[i].addEventListener('click', function(){
-    let cellId = this.getAttribute('id'); // this circle
+    let cellId = this.getAttribute('id'); 
     keepPlaying = input(cellId);
     
-    // userTurn++; // increment user turn by 1
     });
-    if (keepPlaying){
+    if (keepPlaying){ // KEEP PLAYING OR ELSE BREAK OUT
         userTurn++;
     }else{
         break;
@@ -141,10 +137,10 @@ for(let i = 0; i < cells.length; i++){
 }
 
 
-// add listener for End button
+// LISTENER FOR THE END BUTTON
 let end=document.querySelector('#end');
 end.addEventListener('click',(event)=>{
-    location.reload(); // refresh the browser to start over
+    location.reload(); // REFRESH THE BROWSER TO CLEAR EVERYTHING
     return false;
     console.log('end');
 });

@@ -19,26 +19,25 @@ Used Wireframing to visualize the page layout.
 
 [Scott's Project]
 (https://henryscottg.github.io/Simon/)
- * Putting the Score at the top of the screen helps the end user quickly see how they are doing. 
+
  * The layout was all centralized on the screen to help keep the focus in one area. 
- 
  
  User Stories
  * As a user, I should be able to understand how to play the game.
  * As a user, I should be able to if I've won or lost. 
  * As a user, I should be able to click a button to start the game.
  * As a user, I should be able to click a button to stop the game.
- * As a user, I should be able see which cell needs to be clicked.
+ * As a user, I should be able see which cells needs to be clicked.
  
  Future items
+ * Correct the bug for the blinking pattern.
  * Display the score for the clicks. 
  * Create a more improved look/feel.
- * Correct the bugs for the blinks. 
- * Avoid alerts, these are extra clicks.
+ * Avoid alerts, these are extra clicks. Maybe a clear game function.
 
  Lessons Learned
- * Setup for how the code will flow.
+ * Code becomes unclear at times without a flow process.
  * Understand how the game moves through the code. 
- * Don't under estimate the complexity.
+ * Don't under estimate the complexity!
  
  
